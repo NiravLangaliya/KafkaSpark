@@ -53,3 +53,4 @@ df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
 
 df.show()
 ```
+![Load_mysql-01-emp_Spark](https://github.com/NiravLangaliya/KafkaSpark/blob/main/Load_mysql-01-emp_Spark.png)
