@@ -25,6 +25,8 @@ curl -X POST http://localhost:8083/connectors -H "Content-Type: application/json
 
 `kafka-avro-console-consumer --bootstrap-server localhost:9092 --topic mysql-01-emp --from-beginning`
 
+![List_topic_mysql-01-emp](https://github.com/NiravLangaliya/KafkaSpark/blob/main/List_topic_mysql-01-emp.png)
+
 **Spark Submit Command**
 
 
