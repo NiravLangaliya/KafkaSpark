@@ -30,7 +30,7 @@ curl -X POST http://localhost:8083/connectors -H "Content-Type: application/json
 **Spark Submit Command**
 
 
-`pyspark --class "org.myspark.KafkaStream" --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.1`
+`pyspark --class "org.myspark.KafkaStream" --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.0.1,io.delta:delta-core_2.12:0.7.0`
 
 
 
@@ -56,3 +56,28 @@ df.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)")
 df.show()
 ```
 ![Load_mysql-01-emp_Spark](https://github.com/NiravLangaliya/KafkaSpark/blob/main/Load_mysql-01-emp_Spark.png)
+
+
+
+
+`spark-shell --packages io.delta:delta-core_2.12:0.7.0`
+
+```scala
+
+import org.apache.spark.sql.types._
+import org.apache.spark.sql.Row
+val schema = StructType(
+            Seq(
+            StructField("key", StringType, true),  
+            StructField("value", StringType, true),
+            StructField("topic", TimestampType, true),
+            StructField("partition", StringType, true),
+            StructField("offset", StringType, true),
+            StructField("timestamp", StringType, true),
+            StructField("timestampType", StringType, true)
+            )
+          )
+val df = spark.createDataFrame(sc.emptyRDD[Row], schema)
+val audit_path = "/Users/nlangaliya/Downloads/mysql_audit"
+df.write.format("delta").save(audit_path)
+```
