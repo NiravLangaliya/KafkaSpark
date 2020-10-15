@@ -57,3 +57,4 @@ if __name__=='__main__':
     #df_out=spark.sql("select key, SUM(CAST(value as int)) as value from kafka_ip_tbl group by key order by value desc")
 
     #print(df_out.show())
+s
