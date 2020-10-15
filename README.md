@@ -81,3 +81,27 @@ val df = spark.createDataFrame(sc.emptyRDD[Row], schema)
 val audit_path = "/Users/nlangaliya/Downloads/mysql_audit"
 df.write.format("delta").save(audit_path)
 ```
+
+
+
+
+
+**<u>creating incremental processing</u>**
+
+```
+curl -X POST http://localhost:8083/connectors -H "Content-Type: application/json" -d '{
+      "name": "jdbc_source_mysql_05",
+      "config": {
+              "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+              "connection.url": "jdbc:mysql://localhost:3306/demo",
+              "connection.user": "root",
+              "connection.password": "QWEasd234",
+              "topic.prefix": "mysql-05-",
+              "poll.interval.ms" : 3600000,
+              "mode": "incrementing",
+              "catalog.pattern" : "demo",
+              "table.whitelist" : "emp_1",
+              "incrementing.column.name": "empno"
+              }
+      }'
+```
