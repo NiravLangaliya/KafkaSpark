@@ -1,0 +1,77 @@
+{
+  "namespace": "com.example.avro.test",
+  "type": "record",
+  "name": "EmployeeInfo",
+  "fields": [
+    {
+      "name": "Name",
+      "type": "string"
+    },
+   {
+      "name": "ID",
+      "type": "string"
+    },
+    {
+      "name": "Contact",
+      "type": {
+        "name": "Contact",
+        "type": "record",
+        "fields": [
+          {
+            "name": "Email",
+            "type": "string"
+          },
+          {
+            "name": "PhoneNumber",
+            "type": "string"
+          },
+          {
+            "name": "WorkAddress",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LocationDetails",
+      "type": {
+        "name": "LocationDetails",
+        "type": "record",
+        "fields": [
+          {
+            "name": "CountryCode",
+            "type": "string"
+          },
+          {
+            "name": "City",
+            "type": "string"
+          },
+          {
+            "name": "Country",
+            "type": "string"
+          },
+          {
+            "name": "PostalCode",
+            "type": "string"
+          },
+          {
+            "name": "Address",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DateTime",
+      "type": "string"
+    },
+    {
+      "name": "RecNumber",
+      "type": "string"
+    },
+    {
+      "name": "RecCounter",
+      "type": "string"
+    }
+  ]
+}
