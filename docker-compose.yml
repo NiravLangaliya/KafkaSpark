@@ -142,3 +142,16 @@ services:
       KAFKA_REST_BOOTSTRAP_SERVERS: 'broker:29092'
       KAFKA_REST_LISTENERS: "http://0.0.0.0:8082"
       KAFKA_REST_SCHEMA_REGISTRY_URL: 'http://schema-registry:8081'
+
+http://localhost:8083/connectors/source-csv-spooldir-00/config
+
+{              
+        "connector.class": "com.github.jcustenborder.kafka.connect.spooldir.SpoolDirCsvSourceConnector",
+        "topic": "orders_spooldir_00",
+        "input.path": "C://tmp//inputdata",
+        "finished.path": "C://tmp//outputdata",
+        "error.path": "C://tmp//error",
+        "input.file.pattern": ".*\\.csv",
+        "schema.generation.enabled":"true",
+        "csv.first.row.as.header":"true"
+}
