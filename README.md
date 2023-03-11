@@ -129,3 +129,5 @@ except KeyboardInterrupt:
 
 p.flush(30)
 ```
+
+https://docs.confluent.io/platform/current/kafka/deployment.html#memory
